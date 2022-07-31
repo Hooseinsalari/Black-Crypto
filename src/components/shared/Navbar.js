@@ -86,8 +86,24 @@ const NavList = styled.ul `
 `
 
 const NavItem = styled.li `
-    margin: 0 0.8rem;
+    position: relative;
+    margin: 0 2rem;
+    
+    &::before {
+        content: '';
+        width: 0%;
+        height: 2px;
+        background-color: orange;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
 
+    &:hover::before {
+        width: 100%;
+    }
 
     @media (max-width: 768px) {
         margin: 2.5rem auto;
@@ -98,9 +114,11 @@ const NavLink = styled.a `
     color: gold;
     text-decoration: none;
     font-size: 1.1rem;
-    padding: 0.5rem 1rem;
     transition: 0.3s;
-    color: orange;
+    
+    &:hover {
+        color: orange;
+    }
 
 `
 
