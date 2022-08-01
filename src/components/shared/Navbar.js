@@ -15,6 +15,7 @@ const Nav = styled.div `
     padding: 0.5rem 3rem;
     height: 3rem;
     box-shadow: 0px 4px 14px -4px rgba(250,250,250,0.76);
+
     &::before {
         content: '';
         width: ${({toggle}) => toggle ? `100%` : `0%`};
@@ -24,7 +25,7 @@ const Nav = styled.div `
         top: 0;
         left: 0;
         right: 0;
-        z-index: -1;
+        z-index: 100;
         /* transition: 'background-color' ease-in-out 0.3s; */
     }
 
@@ -54,6 +55,7 @@ const HamburgerIcon = styled.div `
 const NavMenu = styled.div `
     position: relative;
     transition: ease-in-out 0.5s;
+    z-index: 1000;
 
     @media (max-width: 768px) {
         position: fixed;
