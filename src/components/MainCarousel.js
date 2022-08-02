@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 // api
 import axios from "axios";
@@ -17,6 +18,10 @@ import { FreeMode, Pagination, Autoplay } from "swiper";
 
 // style
 import styled from "styled-components";
+
+const CoinLink = styled(Link)`
+  text-decoration: none;
+`
 
 const CoinContainer = styled.div`
   margin-top: 4.5rem;
@@ -75,11 +80,15 @@ const MainCarousel = () => {
     fetchDate();
   }, []);
 
+  const numberWithCommas = (num) => {
+    return parseFloat(num).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <>
       
         <Swiper
-          spaceBetween={10}
+          spaceBetween={20}
           autoplay={{
             delay: 1000,
             disableOnInteraction: false,
@@ -104,27 +113,30 @@ const MainCarousel = () => {
             },
             768: {
               width: 768,
-              slidesPerView: 5,
+              slidesPerView: 4,
             },
           }}
         >
           {trendCoins.map((coin) => (
             <SwiperSlide key={coin.id}>
-              <CoinContainer>
-                <CoinImage>
-                  <img src={coin.image} alt="" />
-                </CoinImage>
+              {/* react router Link */}
+              <CoinLink to={`/coins/${coin.id}`}>
+                <CoinContainer>
+                  <CoinImage>
+                    <img src={coin.image} alt="" />
+                  </CoinImage>
 
-                <CoinText>
-                  <TextTop>
-                    <p>{coin.name}</p>
-                    <CoinPrice priceChange={coin.price_change_percentage_24h}>
-                      {parseFloat(coin.price_change_percentage_24h).toFixed(2)}
-                    </CoinPrice>
-                  </TextTop>
-                  <Price>$ {parseFloat(coin.current_price).toFixed(2)}</Price>
-                </CoinText>
-              </CoinContainer>
+                  <CoinText>
+                    <TextTop>
+                      <p>{coin.name}</p>
+                      <CoinPrice priceChange={coin.price_change_percentage_24h}>
+                        {parseFloat(coin.price_change_percentage_24h).toFixed(2)}
+                      </CoinPrice>
+                    </TextTop>
+                    <Price>$ {numberWithCommas(coin.current_price)}</Price>
+                  </CoinText>
+                </CoinContainer>
+              </CoinLink>
             </SwiperSlide>
           ))}
         </Swiper>
