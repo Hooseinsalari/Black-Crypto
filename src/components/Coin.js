@@ -1,118 +1,136 @@
 import React from "react";
 
-// icon
-import { FaArrowRight } from "react-icons/fa";
-
 // style
 import styled from "styled-components";
 
-const Container = styled.div`
-    width: 19rem;
-    height: 13rem;
-    box-shadow: #000 0px 1px 4px;
-    text-align: center;
-    margin: 1rem;
-    border-radius: 5px;
-    padding: 1rem 0.5rem;
-`
-
-const Title = styled.div `
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 1.5rem;
-    color: #fff;
-    margin-bottom: 1.5rem;
-`
-
-const ArrowIcon = styled.div `
-    background-color: #1f2937;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 1.1rem;
-    border: 1px solid #4b5563;
+const Tr = styled.tr`
+    background-color: #16171a;
     cursor: pointer;
-    
-    svg {
-        transition: 0.3s;
-    }
+    transition: 0.3s;
+    color: #fff;
+    border-bottom: 1px solid rgba(81, 81, 81, 1);
 
-    &:hover svg {
-        transform: translateX(2px);
+    &:hover {
+        background-color: #131111;
     }
 `
 
-const Rank = styled.span `
-    background-color: #1f2937;
-    width: 2rem;
-    height: 2rem;
+const Th = styled.th `
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 1.1rem;
-    font-weight: 500;
-    border: 1px solid #4b5563;
+    gap: 15px;
+    padding: 16px;
+    line-height: 1.5rem;
+    text-align: left;
+
+    @media (max-width: 768px) {
+        padding: 14px;
+        gap: 10px;
+    }
+
 `
 
 const CoinImage = styled.img `
-    width: 4rem;
+    width: 3rem;
+    height: 3rem;
+
+    @media (max-width: 768px) {
+        width: 2.6rem;
+        height: 2.6rem;
+    }
 `
 
 const CoinText = styled.div `
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
 `
 
-const CoinTextTop = styled.div `
-    margin: 1.5rem auto;
+const CoinSymbol = styled.span `
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+
+    @media (max-width: 768px) {
+     font-size: 1rem;   
+     font-weight: 500;
+    }
 `
 
 const CoinName = styled.span `
-    margin-right: 4.5rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: darkgray;
+    letter-spacing: 1px;
+
+    @media (max-width: 768px) {
+     font-size: 0.8rem   
+    }
 `
 
-const CoinPriceChange = styled.span `
-margin-left: 4.5rem;
-color: ${({priceChange}) => priceChange > 0 ? 'green' : 'red'};
+const Td = styled.td `
+    display: table-cell;
+    padding: 16px;
+    line-height: 1.5rem;
+    text-align: right;
+    font-size: 0.9rem;
 
-
+    @media (max-width: 768px) {
+        padding: 14px;
+    }
 `
 
-const CoinPrice = styled.span `
-    margin-top: 0.5rem;
+const CoinPriceChange = styled.td `
+    color: ${({priceChange}) => priceChange > 0 ? 'green' : 'red'};
+    display: table-cell;
+    padding: 16px;
+    line-height: 1.5rem;
+    text-align: right;
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    @media (max-width: 768px) {
+        padding: 14px;
+    }
 `
 
-const Coin = ({image, name, priceChange, price, rank}) => {
+const Coin = ({image, name, symbol, priceChange, price, marketCap, rank}) => {
     const numberWithCommas = (num) => {
         return parseFloat(num).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    const intToString = (value) => {
+        var suffixes = ["", "K", "M", "B","T"];
+        var suffixNum = Math.floor((''+value).length/3);
+        var shortValue = parseFloat((suffixNum != 0 ? (value / Math.pow(100,suffixNum)) : value).toPrecision(5));
+        if (shortValue % 1 != 0) {
+            shortValue = shortValue.toFixed(1);
+        }
+        return shortValue+ suffixes[suffixNum];
+    }
+
   return (
-      <Container>
-        <Title>
-            <Rank>{rank}</Rank>
-            <ArrowIcon>
-                <FaArrowRight />
-            </ArrowIcon>
-        </Title>
+    <Tr>
+        <Th>
+            <CoinImage src={image} alt={name} />
 
-      <div>
-        <CoinImage src={image} alt={name} />
-      </div>
+            <CoinText>
+                <CoinSymbol>{symbol}</CoinSymbol>
+                <CoinName>{name}</CoinName>
+            </CoinText>
+        </Th>
+        <Td>
+            ${numberWithCommas(price)}
+        </Td>
+        <CoinPriceChange priceChange={priceChange}>
+            {priceChange.toFixed(2)} %
+        </CoinPriceChange>
+        <Td>${intToString(marketCap)}</Td>
 
-      <CoinText>
-        <CoinTextTop>
-            <CoinName>{name}</CoinName>
-            <CoinPriceChange priceChange={priceChange}>{parseFloat(priceChange).toFixed(2)} %</CoinPriceChange>
-        </CoinTextTop>
-        <CoinPrice>$ {numberWithCommas(price)}</CoinPrice>
-      </CoinText>
-
-    </Container>
+    </Tr>
   );
 };
 

@@ -1,3 +1,5 @@
+import './App.css'
+
 // components
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/shared/Navbar";
