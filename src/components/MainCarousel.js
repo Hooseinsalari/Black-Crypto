@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+// function
+import { numberWithCommas } from "../helper/functions";
+
 // api
 import axios from "axios";
 import { trendingCoins } from "../config/api";
@@ -79,10 +82,6 @@ const MainCarousel = () => {
 
     fetchDate();
   }, []);
-
-  const numberWithCommas = (num) => {
-    return parseFloat(num).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
 
   return (
     <>
