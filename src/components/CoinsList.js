@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Pagination from "./Pagination";
 
 // api
 import axios from "axios";
@@ -147,6 +148,7 @@ const CoinsList = () => {
   const [search, setSearch] = useState("");
   const [coins, setCoins] = useState([]);
   const [filteredCoins, setFilteredCoins] = useState([]);
+  const [page, setPage] = useState(1);
 
   const searchHandler = (e) => {
     setSearch(e.target.value);
@@ -200,9 +202,10 @@ const CoinsList = () => {
                   </tr>
                 </Thead>
                 <tbody>
-                  {filteredCoins.map((coin) => (
+                  {filteredCoins.slice((page - 1) * 10, (page - 1) * 10 + 10).map((coin) => (
                     <Coin
                       key={coin.id}
+                      id={coin.id}
                       image={coin.image}
                       name={coin.name}
                       priceChange={coin.price_change_percentage_24h}
@@ -218,6 +221,9 @@ const CoinsList = () => {
               <NotFound>Not Found</NotFound>
             )}
           </List>
+
+          <Pagination page={page} setPage={setPage} filteredCoins={filteredCoins} />
+
         </>
       ) : (
         <div>

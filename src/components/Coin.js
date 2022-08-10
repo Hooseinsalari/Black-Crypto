@@ -1,5 +1,7 @@
 import React from "react";
 
+import {useNavigate} from "react-router-dom";
+
 // function
 import { numberWithCommas, intToString } from "../helper/functions";
 
@@ -100,10 +102,12 @@ const CoinPriceChange = styled.td `
     }
 `
 
-const Coin = ({image, name, symbol, priceChange, price, marketCap}) => {
+const Coin = ({image, name, symbol, priceChange, price, marketCap, id}) => {
+
+    const navigate = useNavigate();
 
   return (
-    <Tr>
+    <Tr onClick={() => navigate(`/coins/${id}`)}>
         <Th>
             <CoinImage src={image} alt={name} />
 
