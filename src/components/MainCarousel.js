@@ -57,7 +57,9 @@ const TextTop = styled.div `
 
     p {
         margin-right: 0.5rem;
-        font-weight: 600;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+
     }
 `
 
@@ -84,12 +86,12 @@ const MainCarousel = () => {
   }, []);
 
   return (
-    <>
+    <div>
       
         <Swiper
-          spaceBetween={20}
+          spaceBetween={35}
           autoplay={{
-            delay: 1000,
+            delay: 1500,
             disableOnInteraction: false,
           }}
           loop={true}
@@ -112,7 +114,11 @@ const MainCarousel = () => {
             },
             768: {
               width: 768,
-              slidesPerView: 4,
+              slidesPerView: 5,
+            },
+            1024: {
+              width: 1024,
+              slidesPerView: 6,
             },
           }}
         >
@@ -122,14 +128,14 @@ const MainCarousel = () => {
               <CoinLink to={`/coins/${coin.id}`}>
                 <CoinContainer>
                   <CoinImage>
-                    <img src={coin.image} alt="" />
+                    <img src={coin.image} alt={coin.name} />
                   </CoinImage>
 
                   <CoinText>
                     <TextTop>
                       <p>{coin.name}</p>
                       <CoinPrice priceChange={coin.price_change_percentage_24h}>
-                        {parseFloat(coin.price_change_percentage_24h).toFixed(2)}
+                        %{parseFloat(coin.price_change_percentage_24h).toFixed(2)}
                       </CoinPrice>
                     </TextTop>
                     <Price>$ {numberWithCommas(coin.current_price)}</Price>
@@ -139,7 +145,7 @@ const MainCarousel = () => {
             </SwiperSlide>
           ))}
         </Swiper>
-    </>
+    </div>
   );
 };
 

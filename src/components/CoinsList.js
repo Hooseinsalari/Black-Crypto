@@ -51,16 +51,16 @@ const Search = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-
-  
-
 `;
 
 const Label = styled.label`
-  color: #fff;
-  font-size: 1.2rem;
+  color: rgb(255 255 255 / 77%);
+  font-size: 1rem;
   position: absolute;
-  left: 23px;
+  left: 7px;
+  top: -17px;
+  background: #14161a;
+  padding: 5px;
 
   @media (max-width: 768px) {
     font-size: 1rem;
@@ -149,6 +149,7 @@ const NotFound = styled.h1 `
 
 const CoinsList = () => {
   const [search, setSearch] = useState("");
+  const [searchToggle, setSearchToggle] = useState(false)
   const [coins, setCoins] = useState([]);
   const [filteredCoins, setFilteredCoins] = useState([]);
   const [page, setPage] = useState(1);
@@ -180,6 +181,10 @@ const CoinsList = () => {
     filterCoinsHandler();
   }, [search]);
 
+  const focusHandler = () => {
+    setSearchToggle((prevState) => !prevState)
+  }
+
   return (
     <Container>
       {coins.length ? (
@@ -189,7 +194,7 @@ const CoinsList = () => {
 
             <Search>
               <Label htmlFor="search">Find the right currency</Label>
-              <Input type="text" value={search} onChange={searchHandler} />
+              <Input type="text" value={search} onChange={searchHandler} onClick={focusHandler} />
             </Search>
           </div>
 

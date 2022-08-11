@@ -1,18 +1,19 @@
 import React from 'react';
-import styled from 'styled-components';
-
-// image
-import bg from "../image/crypto-bg.jpg"
 import MainCarousel from './MainCarousel';
 
+// image
+import bg from "../image/bg.jpg"
+
+// style
+import styled from 'styled-components';
+
 const Banner = styled.div `
-    /* background-position: ; */
-    /* background-size: cover; */
-    /* background-repeat: no-repeat; */
-    background-color: #000;
+    background: linear-gradient(153deg, rgba(156,163,175,1) 0%, rgba(0,0,0,0.8) 0%), url(${bg});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     width: 100%;
     text-align: center;
-    /* height: 50vh; */
     padding: 2rem 0 4rem;
 `
 

@@ -102,10 +102,12 @@ const CoinDesc = styled.div`
   @media (max-width: 1024px) {
     text-align: center;
     line-height: 1.5rem;
+    padding: 0 3rem;
   }
 
   @media (max-width: 425px) {
     font-size: 0.9rem;
+    padding: 0 1rem;
   }
 `;
 
@@ -119,6 +121,10 @@ const Data = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+
+  @media (max-width: 425px) {
+    padding: 0 0.5rem;
   }
 `;
 

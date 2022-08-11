@@ -4,30 +4,33 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin-top: 2rem;
   width: 100%;
+  margin: 2rem auto 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 const Span = styled.span`
-  background-color: gold;
-  margin: 0.5rem;
-  padding: 10px;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  box-sizing: border-box;
+  color: gold;
+  margin: 0 0.5rem;
+  padding: 5px 14px;
+  border-radius: 50%;
+  background-color: ${({step, page}) => step === page ? '#393b3e' : 'transparent'};
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: ${({step, page}) => step === page ? '1' : '0.5'};
+
+  &:hover {
+    opacity: 1;
+  }
 `;
 
 const Numbers = styled.div`
   display: flex;
   align-items: center;
   overflow-x: scroll;
+
 
   &::-webkit-scrollbar {
     display: none;
@@ -47,27 +50,15 @@ const Pagination = ({ page, setPage, filteredCoins }) => {
     window.scroll(0, 600);
   };
 
-  const prevPageHanler = () => {
-    setPage((prevState) => prevState - 1);
-  };
-
-  const nextPageHanler = () => {
-    setPage((prevState) => prevState + 1);
-  };
-
-  console.log(pageCount);
-
   return (
     <Container>
-      <Span onClick={prevPageHanler}>prev</Span>
       <Numbers>
         {steps.map((step) => (
-          <Span onClick={() => pageHanler(step)} key={step}>
+          <Span page={page} step={step} onClick={() => pageHanler(step)} key={step}>
             {step}
           </Span>
         ))}
       </Numbers>
-      <Span onClick={nextPageHanler}>next</Span>
     </Container>
   );
 };
