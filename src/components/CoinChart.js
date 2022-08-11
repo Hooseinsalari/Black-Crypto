@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 
+// component
+import Loading from "./shared/Loading";
+
 // style
 import styled from "styled-components";
 
@@ -137,7 +140,9 @@ const CoinChart = ({ coin }) => {
           </ChartBtns>
         </>
       ) : (
-        <h1>Loading</h1>
+        <>
+          <Loading />
+        </>
       )}
     </Chart>
   );

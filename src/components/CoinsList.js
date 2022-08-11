@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
+
+// component
 import Pagination from "./Pagination";
+import Loading from "./shared/Loading";
 
 // api
 import axios from "axios";
@@ -226,9 +229,9 @@ const CoinsList = () => {
 
         </>
       ) : (
-        <div>
-          <h1>Loading</h1>
-        </div>
+        <>
+          <Loading />
+        </>
       )}
     </Container>
   );

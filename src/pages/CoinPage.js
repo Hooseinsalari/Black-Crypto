@@ -7,6 +7,7 @@ import { singleCoin } from "../config/api";
 
 // component
 import CoinChart from "../components/CoinChart";
+import LineLoading from "../components/shared/LineLoading";
 
 // function
 import { numberWithCommas } from "../helper/functions";
@@ -198,7 +199,7 @@ const CoinPage = () => {
 
               <CoinData>
                 <p>
-                  Current Price :{" "}
+                  Current Price :
                   <span>
                     ${numberWithCommas(coin.market_data.current_price.usd)}
                   </span>
@@ -207,7 +208,7 @@ const CoinPage = () => {
 
               <CoinData>
                 <p>
-                  Market Cap :{" "}
+                  Market Cap :
                   <span>
                     ${numberWithCommas(coin.market_data.market_cap.usd)}
                   </span>
@@ -221,7 +222,9 @@ const CoinPage = () => {
           </Chart>
         </Container>
       ) : (
-        <h1>Loading</h1>
+        <>
+          <LineLoading />
+        </>
       )}
     </Page>
   );
