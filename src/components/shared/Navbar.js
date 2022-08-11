@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 // icons
 import { FaBars } from "react-icons/fa";
@@ -11,10 +12,10 @@ const Nav = styled.div `
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #14161a;
+    background-color: transparent;
     padding: 0.5rem 3rem;
     height: 3rem;
-    box-shadow: 0px 4px 14px -4px rgba(250,250,250,0.76);
+    box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
 
     &::before {
         content: '';
@@ -90,6 +91,7 @@ const NavList = styled.ul `
 const NavItem = styled.li `
     position: relative;
     margin: 0 2rem;
+    cursor: pointer;
     
     &::before {
         content: '';
@@ -112,14 +114,15 @@ const NavItem = styled.li `
     }
 `
 
-const NavLink = styled.a `
+const NavLink = styled(Link) `
     color: gold;
     text-decoration: none;
     font-size: 1.1rem;
     transition: 0.3s;
+    opacity: 0.8;
     
     &:hover {
-        color: orange;
+        opacity: 1;
     }
 
 `
@@ -147,7 +150,7 @@ const Navbar = () => {
     return (
         <Nav toggle={toggle}>
             <NavIcon>
-                <a href="#">BlackCrypto</a>
+                <Link to="/">BlackCrypto</Link>
             </NavIcon>
 
             <HamburgerIcon onClick={toggleHandler}>
@@ -159,9 +162,9 @@ const Navbar = () => {
                     <IoClose />
                 </CloseMenu>
                 <NavList>
-                    <NavItem><NavLink href="#">Home</NavLink></NavItem>
-                    <NavItem><NavLink href="#">News</NavLink></NavItem>
-                    <NavItem><NavLink href="#">About</NavLink></NavItem>
+                    <NavItem><NavLink to="/">Home</NavLink></NavItem>
+                    <NavItem><NavLink to="/">News</NavLink></NavItem>
+                    <NavItem><NavLink to="/">About</NavLink></NavItem>
                 </NavList>
             </NavMenu>
         </Nav>

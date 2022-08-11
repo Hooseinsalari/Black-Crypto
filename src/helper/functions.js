@@ -1,6 +1,6 @@
 export const numberWithCommas = (num) => {
   return parseFloat(num)
-    .toFixed(2)
+    .toFixed(1)
     .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
 

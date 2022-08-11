@@ -27,7 +27,7 @@ const CoinLink = styled(Link)`
 `
 
 const CoinContainer = styled.div`
-  margin-top: 4.5rem;
+  /* margin-top: 4.5rem; */
   display: flex;
   align-items: center;
   flex-direction: column;

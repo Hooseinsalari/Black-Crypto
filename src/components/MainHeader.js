@@ -17,6 +17,8 @@ const Banner = styled.div `
 `
 
 const BannerText = styled.div `
+    margin-bottom: 4.5rem;
+
     h1 {
         color: gold;
         font-size: 3.8rem;
