@@ -14,6 +14,8 @@ const Container = styled.div`
   text-align: center;
   background-color: #14161a;
   min-height: 100vh;
+
+  
 `;
 
 function App() {

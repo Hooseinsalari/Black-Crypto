@@ -81,7 +81,7 @@ const AboutPage = () => {
         </p>
       </Text>
 
-      <Social>
+      <div>
         <Link
           href="https://github.com/Hooseinsalari"
           target="_blank"
@@ -106,7 +106,7 @@ const AboutPage = () => {
         <Link href="https://t.me/Hossein777s" target="_blank" rel="noreferrer">
           <FaTelegramPlane />
         </Link>
-      </Social>
+      </div>
     </Container>
   );
 };
