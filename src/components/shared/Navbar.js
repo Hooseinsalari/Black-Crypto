@@ -28,7 +28,6 @@ const Nav = styled.div`
     left: 0;
     right: 0;
     z-index: 100;
-    /* transition: 'background-color' ease-in-out 0.3s; */
   }
 
   @media (max-width: 768px) {
@@ -102,7 +101,7 @@ const NavItem = styled.li`
   }
 `;
 
-const Link = styled(NavLink) `
+const Link = styled(NavLink)`
   color: gold;
   text-decoration: none;
   font-size: 1.1rem;
@@ -155,8 +154,8 @@ const Navbar = () => {
   };
 
   const closeMenuHandler = () => {
-    setToggle(false)
-  }
+    setToggle(false);
+  };
 
   return (
     <Nav toggle={toggle}>
@@ -174,13 +173,19 @@ const Navbar = () => {
         </CloseMenu>
         <NavList>
           <NavItem>
-            <Link onClick={closeMenuHandler} to="/">Home</Link>
+            <Link onClick={closeMenuHandler} to="/">
+              Home
+            </Link>
           </NavItem>
           <NavItem>
-            <Link onClick={closeMenuHandler} to="/news">News</Link>
+            <Link onClick={closeMenuHandler} to="/news">
+              News
+            </Link>
           </NavItem>
           <NavItem>
-            <Link onClick={closeMenuHandler} to="/about">About</Link>
+            <Link onClick={closeMenuHandler} to="/about">
+              About
+            </Link>
           </NavItem>
         </NavList>
       </NavMenu>

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 // api
 import axios from "axios";
-import { singleCoin } from "../config/api";
+import { singleCoin } from "../services/api";
 
 // component
 import CoinChart from "../components/CoinChart";
@@ -24,7 +24,6 @@ const Page = styled.div`
 
 const Container = styled.div`
   display: flex;
-  /* align-items: center; */
   width: 100%;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -63,7 +62,7 @@ const Info = styled.div`
     text-align: center;
 
     &::after {
-        display: block;
+      display: block;
     }
   }
 `;
@@ -141,13 +140,15 @@ const CoinData = styled.div`
   }
 
   @media (max-width: 1024px) {
-    p , span{
+    p,
+    span {
       font-size: 1.2rem;
     }
   }
 
   @media (max-width: 425px) {
-    p , span {
+    p,
+    span {
       font-size: 1rem;
       letter-spacing: 1px;
     }

@@ -6,7 +6,7 @@ import Loading from "./shared/Loading";
 
 // api
 import axios from "axios";
-import { coinList } from "../config/api";
+import { coinList } from "../services/api";
 
 // style
 import styled from "styled-components";
@@ -139,7 +139,7 @@ const Th = styled.th`
   }
 `;
 
-const NotFound = styled.h1 `
+const NotFound = styled.h1`
   color: #fff;
   margin-top: 2rem;
   font-size: 2.5rem;
@@ -148,11 +148,10 @@ const NotFound = styled.h1 `
   @media (max-width: 768px) {
     font-size: 2rem;
   }
-`
+`;
 
 const CoinsList = () => {
   const [search, setSearch] = useState("");
-  const [searchToggle, setSearchToggle] = useState(false)
   const [coins, setCoins] = useState([]);
   const [filteredCoins, setFilteredCoins] = useState([]);
   const [page, setPage] = useState(1);
@@ -184,10 +183,6 @@ const CoinsList = () => {
     filterCoinsHandler();
   }, [search]);
 
-  const focusHandler = () => {
-    setSearchToggle((prevState) => !prevState)
-  }
-
   return (
     <Container>
       {coins.length ? (
@@ -197,7 +192,7 @@ const CoinsList = () => {
 
             <Search>
               <Label htmlFor="search">Find the right currency</Label>
-              <Input type="text" value={search} onChange={searchHandler} onClick={focusHandler} />
+              <Input type="text" value={search} onChange={searchHandler} />
             </Search>
           </div>
 
@@ -213,19 +208,21 @@ const CoinsList = () => {
                   </tr>
                 </Thead>
                 <tbody>
-                  {filteredCoins.slice((page - 1) * 10, (page - 1) * 10 + 10).map((coin) => (
-                    <Coin
-                      key={coin.id}
-                      id={coin.id}
-                      image={coin.image}
-                      name={coin.name}
-                      priceChange={coin.price_change_percentage_24h}
-                      price={coin.current_price}
-                      rank={coin.market_cap_rank}
-                      symbol={coin.symbol}
-                      marketCap={coin.market_cap}
-                    />
-                  ))}
+                  {filteredCoins
+                    .slice((page - 1) * 10, (page - 1) * 10 + 10)
+                    .map((coin) => (
+                      <Coin
+                        key={coin.id}
+                        id={coin.id}
+                        image={coin.image}
+                        name={coin.name}
+                        priceChange={coin.price_change_percentage_24h}
+                        price={coin.current_price}
+                        rank={coin.market_cap_rank}
+                        symbol={coin.symbol}
+                        marketCap={coin.market_cap}
+                      />
+                    ))}
                 </tbody>
               </Table>
             ) : (
@@ -233,8 +230,11 @@ const CoinsList = () => {
             )}
           </List>
 
-          <Pagination page={page} setPage={setPage} filteredCoins={filteredCoins} />
-
+          <Pagination
+            page={page}
+            setPage={setPage}
+            filteredCoins={filteredCoins}
+          />
         </>
       ) : (
         <>

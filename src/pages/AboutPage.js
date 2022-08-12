@@ -15,61 +15,55 @@ import {
 // style
 import styled from "styled-components";
 
-const Container = styled.div `
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    text-align: center;
-    padding: 2rem;
+const Container = styled.div`
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 2rem;
+  width: 20rem;
+  margin: 3rem auto;
+  background-color: #16171a;
+
+  @media (max-width: 425px) {
+    width: 85%;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+`;
+
+const Logo = styled.img`
+  width: 8rem;
+  margin: auto;
+  border-radius: 50%;
+`;
+
+const Text = styled.div`
+  color: #fff;
+
+  h2 {
+    font-weight: 600;
+  }
+
+  p {
     width: 20rem;
-    margin: 3rem auto;
-    background-color: #16171a;
-
-    @media (max-width: 425px) {
-        width: 85%;
-        margin: 2rem auto;
-        padding: 1rem;
-    }
-`
-
-const Logo = styled.img `
-    width: 8rem;
     margin: auto;
-    border-radius: 50%;
-`
+    font-weight: 300;
+  }
 
-const Text = styled.div `
-    color: #fff;
-
-    h2 {
-        font-weight: 600;
-    }
+  @media (max-width: 425px) {
+    font-size: 0.95rem;
 
     p {
-        width: 20rem;
-        margin: auto;
-        font-weight: 300;
+      width: 90%;
     }
-
-    @media (max-width: 425px) {
-        font-size: 0.95rem;
-
-        p {
-            width: 90%;
-        }
-    }
-
-`
-
-const Social = styled.div `
-
-`
-
-const Link = styled.a `
-    display: inline-block;
-    margin: 2rem 1rem 0.5rem;
-    font-size: 1.5rem;
-    color: #fff;
-`
+  }
+`;
+const Link = styled.a`
+  display: inline-block;
+  margin: 2rem 1rem 0.5rem;
+  font-size: 1.5rem;
+  color: #fff;
+`;
 
 const AboutPage = () => {
   return (

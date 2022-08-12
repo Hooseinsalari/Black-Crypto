@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 // api
 import axios from "axios";
-import { historicalChart } from "../config/api";
+import { historicalChart } from "../services/api";
 
 // chart js
 import {
@@ -33,10 +33,9 @@ ChartJS.register(
 );
 
 // style
-const Chart = styled.div `
-`
+const Chart = styled.div``;
 
-const ChartBtns = styled.div `
+const ChartBtns = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,31 +43,33 @@ const ChartBtns = styled.div `
 `;
 
 const Button = styled.button`
-    background-color: ${({chartValue, days}) => chartValue === days ? 'gold' : 'transparent'};
-    font-weight: ${({chartValue, days}) => chartValue === days ? '500' : '300'};
-    padding: 0.5rem;
-    border: 2px solid gold;
-    margin: 2rem 1rem 0;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    width: 8rem;
-    color: ${({chartValue, days}) => chartValue === days ? 'black' : 'gold'};
-    transition: 0.2s;
-    cursor: pointer;
+  background-color: ${({ chartValue, days }) =>
+    chartValue === days ? "gold" : "transparent"};
+  font-weight: ${({ chartValue, days }) =>
+    chartValue === days ? "500" : "300"};
+  padding: 0.5rem;
+  border: 2px solid gold;
+  margin: 2rem 1rem 0;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  width: 8rem;
+  color: ${({ chartValue, days }) => (chartValue === days ? "black" : "gold")};
+  transition: 0.2s;
+  cursor: pointer;
 
-    &:hover {
-      background-color: gold;
-      color: #000;
-    }
+  &:hover {
+    background-color: gold;
+    color: #000;
+  }
 
-    @media (max-width: 768px) {
-      font-size: 1rem;
-      width: 6rem;
-    }
-    
-    @media (max-width: 425px) {
-      font-size: 0.9rem;
-    }
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    width: 6rem;
+  }
+
+  @media (max-width: 425px) {
+    font-size: 0.9rem;
+  }
 `;
 
 const CoinChart = ({ coin }) => {
@@ -138,7 +139,12 @@ const CoinChart = ({ coin }) => {
 
           <ChartBtns>
             {chartDays.map((chart) => (
-              <Button chartValue={chart.value} days={days} key={chart.value} onClick={() => setDays(chart.value)}>
+              <Button
+                chartValue={chart.value}
+                days={days}
+                key={chart.value}
+                onClick={() => setDays(chart.value)}
+              >
                 {chart.label}
               </Button>
             ))}
