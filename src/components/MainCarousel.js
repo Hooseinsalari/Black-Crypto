@@ -91,7 +91,7 @@ const MainCarousel = () => {
         <Swiper
           spaceBetween={35}
           autoplay={{
-            delay: 1500,
+            delay: 1000,
             disableOnInteraction: false,
           }}
           loop={true}
@@ -111,15 +111,7 @@ const MainCarousel = () => {
             640: {
               width: 640,
               slidesPerView: 4,
-            },
-            768: {
-              width: 768,
-              slidesPerView: 5,
-            },
-            1024: {
-              width: 1024,
-              slidesPerView: 6,
-            },
+            }
           }}
         >
           {trendCoins.map((coin) => (

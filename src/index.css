@@ -16,6 +16,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+  width: 7px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #14161a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a39300;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ceb900;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

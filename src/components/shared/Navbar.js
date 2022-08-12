@@ -43,9 +43,9 @@ const NavIcon = styled.div`
   }
 `;
 
-const IconLink = styled(NavLink) `
-    text-decoration: none;
-`
+const IconLink = styled(NavLink)`
+  text-decoration: none;
+`;
 
 const HamburgerIcon = styled.div`
   display: none;
@@ -102,7 +102,7 @@ const NavItem = styled.li`
   }
 `;
 
-const Link = styled(NavLink)`
+const Link = styled(NavLink) `
   color: gold;
   text-decoration: none;
   font-size: 1.1rem;
@@ -113,7 +113,7 @@ const Link = styled(NavLink)`
 
   &::before {
     content: "";
-    width: ${({activeClassName}) => activeClassName === 'active' ? '100%' : '0'};
+    width: 0;
     height: 2px;
     background-color: orange;
     position: absolute;
@@ -121,10 +121,12 @@ const Link = styled(NavLink)`
     left: 0;
     border-radius: 10px;
     transition: 0.3s;
+    opacity: 0.7;
   }
 
   &:hover::before {
     width: 100%;
+    opacity: 1;
   }
 
   &:hover {
@@ -152,6 +154,10 @@ const Navbar = () => {
     setToggle((prevState) => !prevState);
   };
 
+  const closeMenuHandler = () => {
+    setToggle(false)
+  }
+
   return (
     <Nav toggle={toggle}>
       <NavIcon>
@@ -168,15 +174,13 @@ const Navbar = () => {
         </CloseMenu>
         <NavList>
           <NavItem>
-            <Link activeclassname="active"  to="/">
-              Home
-            </Link>
+            <Link onClick={closeMenuHandler} to="/">Home</Link>
           </NavItem>
           <NavItem>
-            <Link activeclassname="active" to="/news">News</Link>
+            <Link onClick={closeMenuHandler} to="/news">News</Link>
           </NavItem>
           <NavItem>
-            <Link activeclassname="active" to="/about">About</Link>
+            <Link onClick={closeMenuHandler} to="/about">About</Link>
           </NavItem>
         </NavList>
       </NavMenu>

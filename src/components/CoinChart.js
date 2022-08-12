@@ -53,7 +53,13 @@ const Button = styled.button`
     border-radius: 5px;
     width: 8rem;
     color: ${({chartValue, days}) => chartValue === days ? 'black' : 'gold'};
+    transition: 0.2s;
     cursor: pointer;
+
+    &:hover {
+      background-color: gold;
+      color: #000;
+    }
 
     @media (max-width: 768px) {
       font-size: 1rem;

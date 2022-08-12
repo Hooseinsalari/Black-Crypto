@@ -103,6 +103,9 @@ const Input = styled.input`
 const List = styled.div`
   overflow: auto;
   border-radius: 5px;
+  ::-webkit-scrollbar {
+    height: 1px;
+  }
 `;
 
 const Table = styled.table`
