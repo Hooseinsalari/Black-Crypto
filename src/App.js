@@ -14,8 +14,6 @@ const Container = styled.div`
   text-align: center;
   background-color: #14161a;
   min-height: 100vh;
-
-  
 `;
 
 function App() {
@@ -24,6 +22,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/coins/:id" element={<CoinPage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />

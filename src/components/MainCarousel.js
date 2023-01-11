@@ -82,6 +82,7 @@ const MainCarousel = () => {
     };
 
     fetchDate();
+    console.log(trendCoins);
   }, []);
 
   return (

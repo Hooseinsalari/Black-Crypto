@@ -92,11 +92,12 @@ const CoinName = styled.h2`
 
 const CoinDesc = styled.div`
   text-align: justify;
-  word-spacing: -0.5px;
+  word-break: break-all;
   font-size: 1rem;
   padding: 0 1.5rem;
   margin: 1.5rem auto;
   font-weight: 400;
+  letter-spacing: 0.05rem;
 
   @media (max-width: 1024px) {
     text-align: center;
